@@ -136,6 +136,8 @@ The watcher script runs separately on the operating system scheduler (cron on Li
 
 ## Setup notes
 
+**Schema note:** The DDL files in `sql/tables/` are the available schema exports; some table names differ from those referenced by the live packages. Any tables not included here are proprietary to the company that owns this project and are not published.
+
 - **Oracle:** the code uses `FORALL`, `UTL_FILE` and `DBMS_SCHEDULER`, and includes memory-handling helpers written for older Oracle releases. Test on your target version.
 - **Directory object:** create an Oracle directory named `MYDIR` that points to the folder where the device files are stored, and grant the schema read access. `UTL_FILE` can only open files inside that folder, so the watch folder and `MYDIR` must be the same physical location, or files must be copied there.
 - **Credentials:** never store the database password in the script. Use an Oracle wallet or a protected environment file readable only by the service account, and have `sqlplus` connect through it.
